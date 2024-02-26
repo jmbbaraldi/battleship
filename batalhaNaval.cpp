@@ -9,24 +9,26 @@ void limpaTela() {
     system("CLS");
 }
 
-void iniciaTabuleiro(char tabuleiro[10][10]) {
+void iniciaTabuleiro(char tabuleiro[10][10], char mascara[10][10]) {
 
     //Popula o tabuleiro com água
     int linha, coluna;
     for (linha = 0; linha < 10; linha++) {
         for (coluna = 0; coluna < 10; coluna++) {
             tabuleiro[linha][coluna] = 'A';
+            mascara[linha][coluna] = '*';
         }
     }
 }
 
-void exibeTabuleiro(char tabuleiro[10][10]) {
+void exibeTabuleiro(char tabuleiro[10][10], char mascara[10][10]) {
 
     //Exibe o tabuleiro
     int linha, coluna;
     for (linha = 0; linha < 10; linha++) {
         for (coluna = 0; coluna < 10; coluna++) {
-            cout << " " << tabuleiro[linha][coluna];
+            //cout << " " << tabuleiro[linha][coluna];
+            cout << " " << mascara[linha][coluna];
         }
         cout << "\n";
     }
@@ -35,14 +37,30 @@ void exibeTabuleiro(char tabuleiro[10][10]) {
 void jogo() {
 
     ///Variáveis gerais
-    char tabuleiro[10][10];         //Tabuleiro do jogo
-    int linha, coluna;              //Auxiliares de navegação
+    char tabuleiro[10][10], mascara[10][10];            //Tabuleiro do jogo
+    int linha, coluna;                                  //Auxiliares de navegação
+    int linhaJogada, colunaJogada;                      //Posição escolhida pelo jogador
+    int estadoDeJogo = 1;                               //1 =  jogo acontecendo; 0 = fim de jogo
 
     //Inicia o tabuleiro com água
-    iniciaTabuleiro(tabuleiro);
+    iniciaTabuleiro(tabuleiro, mascara);
 
-    //Exibe o tabuleiro
-    exibeTabuleiro(tabuleiro);
+    while(estadoDeJogo == 1) {
+
+        limpaTela();
+
+        //Exibe o tabuleiro
+        exibeTabuleiro(tabuleiro, mascara);
+
+        cout << "\nDigite uma linha: ";
+        cin >> linhaJogada;
+        cout << "\nDigite uma coluna: ";
+        cin >> colunaJogada;
+
+        //Revela o que está no tabuleiro
+        mascara[linhaJogada][colunaJogada] = tabuleiro[linhaJogada][colunaJogada];
+    }
+
 }
 
 void menuInicial() {
