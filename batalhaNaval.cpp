@@ -47,13 +47,27 @@ void exibeMapa() {
 
 void exibeTabuleiro(char tabuleiro[10][10], char mascara[10][10]) {
 
+    char blue[] = { 0x1b, '[', '1', ';', '3', '4', 'm', 0 };
+    char green[] = { 0x1b, '[', '1', ';', '3', '2', 'm', 0 };
+    char normal[] = { 0x1b, '[', '1', ';', '3', '9', 'm', 0 };
+
     //Exibe o tabuleiro
     int linha, coluna;
     for (linha = 0; linha < 10; linha++) {
         cout << linha << " - ";
         for (coluna = 0; coluna < 10; coluna++) {
             //cout << " " << tabuleiro[linha][coluna];
-            cout << " " << mascara[linha][coluna];
+            switch(mascara[linha][coluna]) {
+                case 'A':
+                    cout << blue << " " << mascara[linha][coluna] << normal;
+                    break;
+                case 'P':
+                    cout << green << " " << mascara[linha][coluna] << normal;
+                    break;
+                default:
+                    cout << " " << mascara[linha][coluna];
+                    break;
+            }
         }
         cout << "\n";
     }
@@ -132,8 +146,6 @@ void jogo(string nomeDoJogador) {
 
         tentativas++;
     }
-
-    limpaTela();
 
     cout << "Fim de jogo, o que deseja fazer? ";
     cout << "\n1- Jogar novamente";
