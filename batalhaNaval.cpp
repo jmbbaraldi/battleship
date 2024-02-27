@@ -6,6 +6,10 @@
 
 using namespace std;
 
+//Cabeçalhos de funções
+void menuInicial();
+
+
 void limpaTela() {
     system("CLS");
 }
@@ -74,6 +78,7 @@ void jogo() {
     int estadoDeJogo = 1;                               //1 =  jogo acontecendo; 0 = fim de jogo
     int pontos = 0;                                     //Pontuação do jogador
     int tentativas = 0, maxDeTentativas = 5;            //Tentativas do jogador
+    int opcao;                                          //Opções de fim de jogo
     string mensagem = "Bem-vindo ao jogo!";             //Feedback para o jogador
 
     //Inicia o tabuleiro com água
@@ -105,6 +110,23 @@ void jogo() {
         tentativas++;
     }
 
+    limpaTela();
+
+    cout << "Fim de jogo, o que deseja fazer? ";
+    cout << "\n1- Jogar novamente";
+    cout << "\n2- Ir para o menu inicial";
+    cout << "\n3- Sair\n";
+    cin >> opcao;
+    switch(opcao) {
+        case 1:
+            jogo();
+            break;
+        case 2:
+            menuInicial();
+            break;
+        case 3:
+            break;
+    }
 }
 
 void menuInicial() {
