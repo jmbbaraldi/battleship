@@ -26,11 +26,31 @@ void iniciaTabuleiro(char tabuleiro[10][10], char mascara[10][10]) {
     }
 }
 
+void exibeMapa() {
+    //Mapa indicador de colunas
+    int i;
+    for(i = 0; i < 10; i++) {
+        if(i == 0) {
+            cout << "     ";
+        }
+        cout << i << " ";
+    }
+    cout << "\n";
+    for(i = 0; i < 10; i++) {
+        if(i == 0) {
+            cout << "     ";
+        }
+        cout << "| ";
+    }
+    cout << "\n";
+}
+
 void exibeTabuleiro(char tabuleiro[10][10], char mascara[10][10]) {
 
     //Exibe o tabuleiro
     int linha, coluna;
     for (linha = 0; linha < 10; linha++) {
+        cout << linha << " - ";
         for (coluna = 0; coluna < 10; coluna++) {
             //cout << " " << tabuleiro[linha][coluna];
             cout << " " << mascara[linha][coluna];
@@ -90,6 +110,9 @@ void jogo(string nomeDoJogador) {
     while(tentativas < maxDeTentativas) {
 
         limpaTela();
+
+        //Exibe o mapa
+        exibeMapa();
 
         //Exibe o tabuleiro
         exibeTabuleiro(tabuleiro, mascara);
