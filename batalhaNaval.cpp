@@ -73,6 +73,7 @@ void jogo() {
     int linhaJogada, colunaJogada;                      //Posição escolhida pelo jogador
     int estadoDeJogo = 1;                               //1 =  jogo acontecendo; 0 = fim de jogo
     int pontos = 0;                                     //Pontuação do jogador
+    int tentativas = 0, maxDeTentativas = 5;            //Tentativas do jogador
     string mensagem = "Bem-vindo ao jogo!";             //Feedback para o jogador
 
     //Inicia o tabuleiro com água
@@ -81,24 +82,27 @@ void jogo() {
     //Posiciona os barcos aleatoriamente
     posicionaBarcos(tabuleiro);
 
-    while(estadoDeJogo == 1) {
+    while(tentativas < maxDeTentativas) {
 
         limpaTela();
 
         //Exibe o tabuleiro
         exibeTabuleiro(tabuleiro, mascara);
 
-        cout << "\nPontos: " << pontos;
+        cout << "\nPontos: " << pontos << " | Tentativas Restantes: " << maxDeTentativas - tentativas;
         cout << "\n" << mensagem;
         cout << "\nDigite uma linha: ";
         cin >> linhaJogada;
         cout << "\nDigite uma coluna: ";
         cin >> colunaJogada;
 
+        //Verifica a jogada
         verificaTiro(tabuleiro, linhaJogada, colunaJogada, &pontos, &mensagem);
 
         //Revela o que está no tabuleiro
         mascara[linhaJogada][colunaJogada] = tabuleiro[linhaJogada][colunaJogada];
+
+        tentativas++;
     }
 
 }
