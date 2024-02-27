@@ -52,6 +52,19 @@ void posicionaBarcos(char tabuleiro[10][10]) {
     }
 }
 
+void verificaTiro(char tabuleiro[10][10], int linhaJogada, int colunaJogada, int *pontos, string *mensagem) {
+    //Verifica quantos pontos adicionar
+    switch(tabuleiro[linhaJogada][colunaJogada]) {
+        case 'P':
+            *pontos = *pontos + 10;
+            *mensagem = "Voce acertou um barco pequeno! (10 pts)";
+            break;
+        case 'A':
+            *mensagem = "Voce acertou a agua!";
+            break;
+    }
+}
+
 void jogo() {
 
     ///Variáveis gerais
@@ -59,6 +72,8 @@ void jogo() {
     int linha, coluna;                                  //Auxiliares de navegação
     int linhaJogada, colunaJogada;                      //Posição escolhida pelo jogador
     int estadoDeJogo = 1;                               //1 =  jogo acontecendo; 0 = fim de jogo
+    int pontos = 0;                                     //Pontuação do jogador
+    string mensagem = "Bem-vindo ao jogo!";             //Feedback para o jogador
 
     //Inicia o tabuleiro com água
     iniciaTabuleiro(tabuleiro, mascara);
@@ -73,10 +88,14 @@ void jogo() {
         //Exibe o tabuleiro
         exibeTabuleiro(tabuleiro, mascara);
 
+        cout << "\nPontos: " << pontos;
+        cout << "\n" << mensagem;
         cout << "\nDigite uma linha: ";
         cin >> linhaJogada;
         cout << "\nDigite uma coluna: ";
         cin >> colunaJogada;
+
+        verificaTiro(tabuleiro, linhaJogada, colunaJogada, &pontos, &mensagem);
 
         //Revela o que está no tabuleiro
         mascara[linhaJogada][colunaJogada] = tabuleiro[linhaJogada][colunaJogada];
