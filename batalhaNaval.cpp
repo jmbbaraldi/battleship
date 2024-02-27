@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string>
 #include <iostream>
+#include <time.h>
 
 using namespace std;
 
@@ -27,11 +28,25 @@ void exibeTabuleiro(char tabuleiro[10][10], char mascara[10][10]) {
     int linha, coluna;
     for (linha = 0; linha < 10; linha++) {
         for (coluna = 0; coluna < 10; coluna++) {
-            //cout << " " << tabuleiro[linha][coluna];
+            cout << " " << tabuleiro[linha][coluna];
             cout << " " << mascara[linha][coluna];
         }
         cout << "\n";
     }
+}
+
+void posicionaBarcos(char tabuleiro[10][10]) {
+
+    int i, quantidade = 10;
+
+    for(i = 0; i < quantidade; i++) {
+        int linhaBarco = rand() % 10;
+        int colunaBarco = rand() % 10;
+
+        tabuleiro[linhaBarco][colunaBarco] = 'P';
+    }
+
+
 }
 
 void jogo() {
@@ -44,6 +59,9 @@ void jogo() {
 
     //Inicia o tabuleiro com água
     iniciaTabuleiro(tabuleiro, mascara);
+
+    //Posiciona os barcos aleatoriamente
+    posicionaBarcos(tabuleiro);
 
     while(estadoDeJogo == 1) {
 
@@ -96,6 +114,8 @@ void menuInicial() {
 }
 
 int main() {
+
+    srand((unsigned)time(NULL));
 
     menuInicial();
 
