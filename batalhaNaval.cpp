@@ -69,7 +69,7 @@ void verificaTiro(char tabuleiro[10][10], int linhaJogada, int colunaJogada, int
     }
 }
 
-void jogo() {
+void jogo(string nomeDoJogador) {
 
     ///Variáveis gerais
     char tabuleiro[10][10], mascara[10][10];            //Tabuleiro do jogo
@@ -96,9 +96,9 @@ void jogo() {
 
         cout << "\nPontos: " << pontos << " | Tentativas Restantes: " << maxDeTentativas - tentativas;
         cout << "\n" << mensagem;
-        cout << "\nDigite uma linha: ";
+        cout << "\n" << nomeDoJogador << ", digite uma linha: ";
         cin >> linhaJogada;
-        cout << "\nDigite uma coluna: ";
+        cout << "\n" << nomeDoJogador << ", digite uma coluna: ";
         cin >> colunaJogada;
 
         //Verifica a jogada
@@ -119,7 +119,7 @@ void jogo() {
     cin >> opcao;
     switch(opcao) {
         case 1:
-            jogo();
+            jogo(nomeDoJogador);
             break;
         case 2:
             menuInicial();
@@ -133,6 +133,8 @@ void menuInicial() {
     //Opção escolhida pelo usuário
     int opcao = 0;
 
+    string nomeDoJogador;                               //Nome do susuário
+
     while ( opcao < 1 || opcao > 3) {
         limpaTela();
         cout << "Bem-vindo ao Jogo de Batalha Naval";
@@ -144,8 +146,10 @@ void menuInicial() {
 
         switch(opcao) {
         case 1:
+            cout << "Qual o sue nome? \n";
+            cin >> nomeDoJogador;
             //Inicia o jogo
-            jogo();
+            jogo(nomeDoJogador);
             break;
 
         case 2:
