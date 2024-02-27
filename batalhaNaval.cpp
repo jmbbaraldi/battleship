@@ -28,7 +28,7 @@ void exibeTabuleiro(char tabuleiro[10][10], char mascara[10][10]) {
     int linha, coluna;
     for (linha = 0; linha < 10; linha++) {
         for (coluna = 0; coluna < 10; coluna++) {
-            cout << " " << tabuleiro[linha][coluna];
+            //cout << " " << tabuleiro[linha][coluna];
             cout << " " << mascara[linha][coluna];
         }
         cout << "\n";
@@ -37,16 +37,19 @@ void exibeTabuleiro(char tabuleiro[10][10], char mascara[10][10]) {
 
 void posicionaBarcos(char tabuleiro[10][10]) {
 
-    int i, quantidade = 10;
+    int i, quantidade = 10, quantidadePosicionada = 0;
 
-    for(i = 0; i < quantidade; i++) {
-        int linhaBarco = rand() % 10;
-        int colunaBarco = rand() % 10;
+    while(quantidadePosicionada < quantidade) {
+        int linhaAleatoria = rand() % 10; //Linha de posicionamento é aleatória
+        int colunaAleatoria = rand() % 10; //Coluna de posicionamento é aleatória
 
-        tabuleiro[linhaBarco][colunaBarco] = 'P';
+        if(tabuleiro[linhaAleatoria][colunaAleatoria] == 'A') {
+            tabuleiro[linhaAleatoria][colunaAleatoria] = 'P';
+
+            //Aumenta a quantidade posicionada
+            quantidadePosicionada++;
+        }
     }
-
-
 }
 
 void jogo() {
