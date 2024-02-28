@@ -111,7 +111,7 @@ void jogo(string nomeDoJogador) {
     int linhaJogada, colunaJogada;                      //Posição escolhida pelo jogador
     int estadoDeJogo = 1;                               //1 =  jogo acontecendo; 0 = fim de jogo
     int pontos = 0;                                     //Pontuação do jogador
-    int tentativas = 0, maxDeTentativas = 5;            //Tentativas do jogador
+    int tentativas = 0, maxDeTentativas = 15;            //Tentativas do jogador
     int opcao;                                          //Opções de fim de jogo
     string mensagem = "Bem-vindo ao jogo!";             //Feedback para o jogador
 
@@ -197,6 +197,16 @@ void menuInicial() {
 
         case 2:
             //Informações do jogo
+            limpaTela();
+            cout << "Informacoes do jogo: ";
+            cout << "\nJogo desenvolvido por Joao Marcelo em 2024";
+            cout << "\n1- Voltar";
+            cout << "\n2- Sair\n";
+            cin >> opcao;
+            if(opcao == 1) {
+                menuInicial();
+            }
+
             break;
 
         case 3:
