@@ -1,8 +1,8 @@
 # Sobre o projeto
 
-O Jogo da Forca foi um projeto realizado durante o Curso Completo de Linguagem C e C++ - Iniciante ao Avançado da One Day Code
+O jogo de Batalha Naval foi um projeto realizado durante o Curso Completo de Linguagem C e C++ - Iniciante ao Avançado da One Day Code
 
-Se consiste em um jogo da forca, criado apenas com C++.
+Se consiste em um jogo de batalha naval, criado apenas com C++.
 
 ## Preview
 
